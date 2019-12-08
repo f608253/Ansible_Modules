@@ -1,0 +1,20 @@
+---
+ - name: This play will make use of become module in ansible
+   hosts: redhat-new
+#   become: yes 
+#   become_user: apache
+   tasks:
+   - name: capture output of id command
+     command: id -un
+     become: yes
+     become_user: apache
+     register: login
+   - debug: var=login.stdout
+   - name: Access a file on remote server
+     shell: ls -l /home/apache/a.txt
+     become: yes
+     become_user: apache
+     register: list
+   - debug: var=list.stdout
+   - win_whoami:
+     become: yes

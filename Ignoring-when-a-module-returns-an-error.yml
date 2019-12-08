@@ -1,0 +1,10 @@
+---
+ - name: Ignoring when a module returns an error running it
+   hosts: jumper
+   gather_facts: False
+   tasks:
+   - name: run myprog
+     shell: /opt/myprog
+     register: result
+     ignore_errors: True
+   - debug: var=result

@@ -1,0 +1,10 @@
+---
+ - name: Install ansible 
+   hosts: localhost
+   tasks:
+   - name: install the git package
+     yum: 
+       name: git 
+       state: latest
+     become: yes
+  

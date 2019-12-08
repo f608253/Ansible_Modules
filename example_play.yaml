@@ -1,0 +1,9 @@
+---
+ - name: variable precedence test
+   hosts: jumper
+   gather_facts: False
+   vars_files:
+    - nginx.yml
+   tasks: 
+   - debug: var=key_file
+   - debug: var=cert_file
